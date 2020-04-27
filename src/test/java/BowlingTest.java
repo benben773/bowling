@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 
 public class BowlingTest {
     @Test
-    public void bowlingTest(){
+    public void when_all_score_0_bowlingTest(){
         Bowling bowling = new Bowling();
-        bowling.roll(5);
-        int score = bowling.score();
-        assertEquals(score, 150);
-
+        for (int i = 0; i <20; i++) {
+            bowling.roll(0);
+        }
+        assertEquals(0, bowling.score());
 
     }
 }
