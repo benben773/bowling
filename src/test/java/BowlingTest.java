@@ -25,6 +25,16 @@ public class BowlingTest {
         assertEquals( 20,bowling.getRecordList().size());
     }
     @Test
+    public void all_strike_record_Test(){
+        Bowling bowling = new Bowling();
+        for (int i = 0; i <10; i++) {
+            bowling.roll(10);
+        }
+        assertEquals(10, bowling.getRecordList().get(0).getRoll());
+        assertEquals(10, bowling.getRecordList().get(2).getRoll());
+        assertEquals( 10,bowling.getRecordList().size());
+    }
+    @Test
     public void all_miss_but_4_and_5_roll_record_Test(){
         Bowling bowling = new Bowling();
         for (int i = 0; i <10; i++) {
