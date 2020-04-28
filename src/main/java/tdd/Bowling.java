@@ -28,7 +28,4 @@ public class Bowling {
         return recordList;
     }
 
-    public void setRecordList(List<GameSet> recordList) {
-        this.recordList = recordList;
-    }
 }
