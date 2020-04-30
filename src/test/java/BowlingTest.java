@@ -45,6 +45,7 @@ public class BowlingTest {
         assertEquals(5, bowling.getRecordList().get(0).getRoll());
         assertEquals(5, bowling.getRecordList().get(20).getRoll());
         assertEquals( 21,bowling.getRecordList().size());
+        assertEquals( 150, bowling.score());
     }
     @Test
     public void all_miss_but_4_and_5_roll_record_Test(){
