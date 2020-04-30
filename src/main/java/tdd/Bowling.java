@@ -1,8 +1,7 @@
 package tdd;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author ：ls05
@@ -10,6 +9,7 @@ import java.util.List;
  */
 public class Bowling {
     private List<GameSet> recordList;
+    private int score;
 
     public Bowling() {
         recordList = new ArrayList<GameSet>();
@@ -21,7 +21,37 @@ public class Bowling {
     }
 
     public int score() {
-        return 0;
+
+        score = 0;
+        ListIterator<GameSet> iterator = recordList.listIterator();
+        while (iterator.hasNext()) {
+            int thisRoll = iterator.next().getRoll();
+            if (iterator.hasNext()) {
+                int nextRoll = iterator.next().getRoll();
+                if (thisRoll + nextRoll == 10 || thisRoll + nextRoll == 20) {
+                    if (iterator.hasNext()) {
+                        int nextNextScore = iterator.next().getRoll();
+                        score += thisRoll + nextRoll + nextNextScore;
+                        turnToPreTurn(iterator, thisRoll);
+                    }
+                    iterator.previous();
+                }else{
+                    score += thisRoll + nextRoll;
+                }
+            }
+        }
+        return score;
+    }
+
+    /**
+     * 向前移动一个轮次
+     * @param iterator
+     * @param thisRoll
+     */
+    private void turnToPreTurn(ListIterator<GameSet> iterator, int thisRoll) {
+        if (thisRoll == 10) {
+            iterator.previous();
+        }
     }
 
     public List<GameSet> getRecordList() {
