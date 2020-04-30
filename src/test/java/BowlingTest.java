@@ -2,7 +2,6 @@ import org.junit.Test;
 import tdd.Bowling;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class BowlingTest {
     @Test
@@ -27,12 +26,14 @@ public class BowlingTest {
     @Test
     public void all_strike_record_Test(){
         Bowling bowling = new Bowling();
-        for (int i = 0; i <10; i++) {
+        for (int i = 0; i <12; i++) {
             bowling.roll(10);
         }
         assertEquals(10, bowling.getRecordList().get(0).getRoll());
         assertEquals(10, bowling.getRecordList().get(2).getRoll());
-        assertEquals( 10,bowling.getRecordList().size());
+        assertEquals( 12,bowling.getRecordList().size());
+        assertEquals( 300, bowling.score());
+       ;
     }
     @Test
     public void all_spare_record_Test(){
