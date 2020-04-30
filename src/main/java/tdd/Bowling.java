@@ -29,16 +29,25 @@ public class Bowling {
             if (iterator.hasNext()) {
                 int nextRoll = iterator.next().getRoll();
                 if (iterator.hasNext()) {
-                    GameSet nextNext = iterator.next();
-                    score += thisRoll + nextRoll + nextNext.getRoll();
-                    if (thisRoll == 10) {
-                        iterator.previous();
-                    }
+                    int nextNextScore = iterator.next().getRoll();
+                    score += thisRoll + nextRoll + nextNextScore;
+                    turnToPreTurn(iterator, thisRoll);
                 }
                 iterator.previous();
             }
         }
         return score;
+    }
+
+    /**
+     * 向前移动一个轮次
+     * @param iterator
+     * @param thisRoll
+     */
+    private void turnToPreTurn(ListIterator<GameSet> iterator, int thisRoll) {
+        if (thisRoll == 10) {
+            iterator.previous();
+        }
     }
 
     public List<GameSet> getRecordList() {
