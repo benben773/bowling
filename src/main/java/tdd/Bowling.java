@@ -28,12 +28,16 @@ public class Bowling {
             int thisRoll = iterator.next().getRoll();
             if (iterator.hasNext()) {
                 int nextRoll = iterator.next().getRoll();
-                if (iterator.hasNext()) {
-                    int nextNextScore = iterator.next().getRoll();
-                    score += thisRoll + nextRoll + nextNextScore;
-                    turnToPreTurn(iterator, thisRoll);
+                if (thisRoll + nextRoll == 10 || thisRoll + nextRoll == 20) {
+                    if (iterator.hasNext()) {
+                        int nextNextScore = iterator.next().getRoll();
+                        score += thisRoll + nextRoll + nextNextScore;
+                        turnToPreTurn(iterator, thisRoll);
+                    }
+                    iterator.previous();
+                }else{
+                    score += thisRoll + nextRoll;
                 }
-                iterator.previous();
             }
         }
         return score;
