@@ -1,8 +1,7 @@
 package tdd;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author ：ls05
@@ -10,6 +9,7 @@ import java.util.List;
  */
 public class Bowling {
     private List<GameSet> recordList;
+    private int score;
 
     public Bowling() {
         recordList = new ArrayList<GameSet>();
@@ -21,7 +21,21 @@ public class Bowling {
     }
 
     public int score() {
-        return 0;
+
+        score = 0;
+        ListIterator<GameSet> iterator = recordList.listIterator();
+        while (iterator.hasNext()) {
+            int thisRoll = iterator.next().getRoll();
+            if(iterator.hasNext()){
+                int nextRoll = iterator.next().getRoll();
+                if(iterator.hasNext()){
+                    score += thisRoll + nextRoll + iterator.next().getRoll();
+                    iterator.previous();
+                }
+                iterator.previous();
+            }
+        }
+        return score;
     }
 
     public List<GameSet> getRecordList() {
