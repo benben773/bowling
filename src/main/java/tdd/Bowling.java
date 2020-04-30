@@ -26,11 +26,14 @@ public class Bowling {
         ListIterator<GameSet> iterator = recordList.listIterator();
         while (iterator.hasNext()) {
             int thisRoll = iterator.next().getRoll();
-            if(iterator.hasNext()){
+            if (iterator.hasNext()) {
                 int nextRoll = iterator.next().getRoll();
-                if(iterator.hasNext()){
-                    score += thisRoll + nextRoll + iterator.next().getRoll();
-                    iterator.previous();
+                if (iterator.hasNext()) {
+                    GameSet nextNext = iterator.next();
+                    score += thisRoll + nextRoll + nextNext.getRoll();
+                    if (thisRoll == 10) {
+                        iterator.previous();
+                    }
                 }
                 iterator.previous();
             }
