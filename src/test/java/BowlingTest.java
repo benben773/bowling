@@ -77,5 +77,7 @@ public class BowlingTest {
         assertEquals(9, bowling.getRecordList().get(3).getRoll());
         assertEquals(5, bowling.getRecordList().get(20).getRoll());
         assertEquals( 21,bowling.getRecordList().size());
+        assertEquals( 112, bowling.score());
+
     }
 }
